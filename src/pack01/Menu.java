@@ -353,6 +353,7 @@ public class Menu {
                 case 1:
                     vuelo.setAeronave(new Aeronave());
                     System.out.println("La aeronave seleccionada tiene las siguientes caracteristicas: ");
+                    System.out.println();
                     break;
                 case 2:
                     break;
