@@ -18,4 +18,8 @@ public class Pasaje {
 		this.asiento = asiento;
 	}
 
+	@Override
+	public String toString(){
+		return "Numero de pasaje: " + numeroPasaje + "\n" + asiento.toString();
+	}
 }

@@ -23,6 +23,8 @@ public class Asiento {
 	public int getNumero() {
 		return fila;
 	}
+	public void setFila(int fila){this.fila = fila; }
+	public int getFila(){ return fila; }
 	public void setLetra(char letra) {
 		this.letra = letra;
 	}

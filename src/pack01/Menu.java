@@ -2,6 +2,7 @@ package pack01;
 
 import javax.print.Doc;
 import java.time.*;
+import java.util.ArrayList;
 
 public class Menu {
 
@@ -258,6 +259,111 @@ public class Menu {
         }while (!respuesta);
 
         return new Piloto(peso, documento, licencia, pesoEquipaje);
+    }
+
+    public static void entradaDatosSalidaDestino(Vuelo vuelo){
+
+        boolean respuesta;
+
+        System.out.println("A continuacion se le pediran los datos de ciudades y aeropuertos de origen y destino.");
+        System.out.println("Introduzca la ciudad de salida: ");
+        vuelo.setCiudadSalida(EntradasConsola.entradaString());
+        System.out.println("Introduzca el aeropuerto de origen: ");
+        vuelo.setAeropuertoSalida(EntradasConsola.entradaString());
+        System.out.println("Introduzca la ciudad de destino: ");
+        vuelo.setCiudadDestino(EntradasConsola.entradaString());
+        System.out.println("Introduzca el aeropuerto de destino: ");
+        vuelo.setAeropuertoDestino(EntradasConsola.entradaString());
+        System.out.println("Introduzca la distanacia de vuelo: ");
+        vuelo.setDistancia(EntradasConsola.entradaoEnteroPositivo());
+
+        do{
+            System.out.println("1. Ciudad de origen: " + vuelo.getCiudadSalida());
+            System.out.println("2. Aeropuerto de origen: " + vuelo.getAeropuertoSalida());
+            System.out.println("3. Ciudad de destino: " + vuelo.getCiudadDestino());
+            System.out.println("4. Aeropuerto de destino: " + vuelo.getCiudadDestino());
+            System.out.println("5. Distancia de vuelo: " + vuelo.getDistancia());
+            System.out.println("Son estos datos correctos?");
+            respuesta = EntradasConsola.entradaBoolean();
+
+            if(!respuesta){
+                System.out.println("Cual de estos datos quiere modificar?");
+                System.out.println("1. Ciudad de origen: " + vuelo.getCiudadSalida());
+                System.out.println("2. Aeropuerto de origen: " + vuelo.getAeropuertoSalida());
+                System.out.println("3. Ciudad de destino: " + vuelo.getCiudadDestino());
+                System.out.println("4. Aeropuerto de destino: " + vuelo.getCiudadDestino());
+                System.out.println("5. Distancia de vuelo: " + vuelo.getDistancia());
+                System.out.println("Introduzca el numero de su opcion:");
+
+                switch (EntradasConsola.entradaOpcion(5)){
+                    case 1:
+                        System.out.println("Introduzca la ciudad de origen: ");
+                        vuelo.setCiudadSalida(EntradasConsola.entradaString());
+                        break;
+                    case 2:
+                        System.out.println("Introduzca el aeropuerto de origen: ");
+                        vuelo.setAeropuertoSalida(EntradasConsola.entradaString());
+                        break;
+                    case 3:
+                        System.out.println("Introduzca la cidad de destino: ");
+                        vuelo.setCiudadDestino(EntradasConsola.entradaString());
+                        break;
+                    case 4:
+                        System.out.println("Introduzca el aeropuerto de destino: ");
+                        vuelo.setAeropuertoDestino(EntradasConsola.entradaString());
+                        break;
+                    case 5:
+                        System.out.println("Introduzca la distancia de vuelo: ");
+                        vuelo.setDistancia(EntradasConsola.entradaoEnteroPositivo());
+                        break;
+                    default:
+                        System.out.println("Opcion incorrecta!");
+                        break;
+                }
+            }
+        }while(!respuesta);
+    }
+
+
+    public static void configurarVuelo(Vuelo vuelo){
+
+        /*
+        private String ciudadSalida;
+        private String ciudadDestino;
+        private String aeropuertoSalida;
+        private String aeropuertoDestino;
+        private int distancia;
+        private Aeronave aeronave;
+        private Piloto comandante;
+        private Piloto primerOficial;
+        private LocalDate fechaVuelo;
+        private ArrayList<Pasajero> pasajeros;*/
+
+        entradaDatosSalidaDestino(vuelo);
+
+
+        do{
+            System.out.println("Selecione una aeronave: ");
+            System.out.println("1. Boeing 737-400.");
+            System.out.println("2. McDouglas MD-80.");
+            System.out.println("3. Embraer E-190.");
+            System.out.println("Introduzca el numero de su opcion: ");
+
+            switch (EntradasConsola.entradaOpcion(3)){
+                case 1:
+                    vuelo.setAeronave(new Aeronave());
+                    System.out.println("La aeronave seleccionada tiene las siguientes caracteristicas: ");
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                default:
+                    System.out.println("Opcion incorrecta!");
+                    break;
+            }
+        }
+
     }
 
 }
