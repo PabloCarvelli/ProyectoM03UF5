@@ -27,4 +27,9 @@ public class Licencia {
 		this.fechaVencimiento = fechaVencimiento;
 	}
 
+	@Override
+	public String toString(){
+		return "\nNumero de licencia: " + numeroLicencia + "\nFecha de vencimiento: " + fechaVencimiento.toString();
+	}
+
 }

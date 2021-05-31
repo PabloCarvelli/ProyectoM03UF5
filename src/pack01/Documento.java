@@ -51,6 +51,6 @@ public class Documento {
 	
 	@Override
 	public String toString() {
-		return "Nombre: " + nombre + "Primer apellido: " + apellido01 + "Segundo apellido: " + apellido02 + "NumeroDNI: " + dni + "LetraDNI: " + letra;
+		return "\nNombre: " + nombre + "\nPrimer apellido: " + apellido01 + "\nSegundo apellido: " + apellido02 + "\nNumeroDNI: " + dni + "\nLetraDNI: " + letra;
 	}
 }

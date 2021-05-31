@@ -17,7 +17,7 @@ public class Vuelo {
     private ArrayList<Pasajero> pasajeros;
 
     public Vuelo(){
-
+        pasajeros = new ArrayList<Pasajero>();
     }
 
     public void setCiudadSalida(String ciudadSalida){
@@ -76,10 +76,34 @@ public class Vuelo {
         return primerOficial;
     }
 
+    public void setFechaVuelo(LocalDate fechaVuelo){
+        this.fechaVuelo = fechaVuelo;
+    }
+    public LocalDate getFechaVuelo(){
+        return fechaVuelo;
+    }
+
+    public ArrayList<Pasajero> getPasajeros(){
+        return pasajeros;
+    }
+
     public void abordarPasajero(Pasajero pasajero){
-        pasajeros.add(pasajero);
-        System.out.println(pasajero.getPasaje().toString());
-        System.out.println("De un total de " + aeronave.getNumeroTotalDeAsientos() + " asientos en la aeronave.");
-        System.out.println("Quedan " + aeronave.getNumeroAsientosLibres() + " asientos disponibles.");
+
+        if(aeronave.getNumeroAsientosLibres() > 0){
+            System.out.println("Entro2!");
+            pasajeros.add(pasajero);
+            System.out.println(pasajero.getPasaje().toString());
+            System.out.println("De un total de " + aeronave.getNumeroTotalDeAsientos() + " asientos en la aeronave.");
+            System.out.println("Quedan " + aeronave.getNumeroAsientosLibres() + " asientos disponibles.");
+        }else {
+            System.out.println("Todas las plazas en el avion se encuentran ocupadas.");
+            System.out.println("Se ah agotado los asientos para este vuelo.");
+        }
+
+    }
+
+    @Override
+    public String toString(){
+        return "\nCiudad de origen: " + ciudadSalida + "\nAeropuerto de origen: " + aeropuertoSalida + "\nCiudad de destino: " + ciudadDestino + "\nAeropuerto de destino: " + aeropuertoDestino + "\nDistancia de vuelo: " + distancia + "\n\nInformacion de la aeronave: " + aeronave.toString() + "\n\nInformacion del comandante: " + comandante.toString() + "\n\nInformacion del primer oficial: " + primerOficial.toString() + "\n\nFecha de salida: " + fechaVuelo.toString();
     }
 }

@@ -2,8 +2,8 @@ package pack01;
 
 public class Persona {
 	
-	private double peso;
-	private Documento documento;
+	protected double peso;
+	protected Documento documento;
 	
 	public Persona(double peso, Documento documento) {
 		this.peso = peso;

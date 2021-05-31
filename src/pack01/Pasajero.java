@@ -9,10 +9,11 @@ public class Pasajero extends Persona {
 		this.pasaje = pasaje;
 		this.pesoEquipaje = pesoEquipaje;
 	}
+	/*
 	public Pasajero(double peso, Documento documento, double pesoEquipaje) {
 		super(peso, documento);
 		this.pesoEquipaje = pesoEquipaje;
-	}
+	}*/
 	
 	public void setPasaje(Pasaje pasaje) {
 		this.pasaje = pasaje;
@@ -27,4 +28,8 @@ public class Pasajero extends Persona {
 		return pesoEquipaje;
 	}
 
+	@Override
+	public String toString(){
+		return getDocumento().toString() + getPasaje().toString();
+	}
 }

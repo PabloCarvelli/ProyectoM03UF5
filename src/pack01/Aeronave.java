@@ -7,7 +7,7 @@ public class Aeronave {
 	private int pesoMaximoTotal = 62820;
 	private int pesoOperacionPasaje;
 	private int autonomia = 5241;
-	private double combustible;
+	private double combustible = 0.0;
 
 	static Asiento a1 = new Asiento(1, 'a', true, false);
 	static Asiento a2 = new Asiento(1, 'b', false, true);
@@ -269,6 +269,8 @@ public class Aeronave {
 	public int getPilotosParaOperacion() {
 		return pilotosParaOperacion;
 	}
+
+	public int getPesoMaximoTotal() {return pesoMaximoTotal; }
 	
 	public int getPesoOperacionPasaje() {
 		return pesoOperacionPasaje;
@@ -296,6 +298,10 @@ public class Aeronave {
 			this.combustible = combustible * 0.7;
 		}
 	}
+
+	public double getCombustible(){
+		return combustible;
+	}
 	
 	public int getNumeroTotalDeAsientos() {
 		return asientos.length;
@@ -321,4 +327,8 @@ public class Aeronave {
 		return cont;
 	}
 
+	@Override
+	public String toString(){
+		return "\nFabricante: " + getFabricante() + "\nModelo: " + getModelo() + "\nPilotos para la opecion: " + getPilotosParaOperacion() + "\nPeso maximo total: " + getPesoMaximoTotal() + "\nAutonomia: " + getAutonomia() + "\nCombustible: " + getCombustible();
+	}
 }

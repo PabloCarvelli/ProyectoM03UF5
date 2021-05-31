@@ -7,10 +7,8 @@ public class Program {
 
 	public static void main(String[] args) {
 
-		//Aeronave a = new Aeronave();
-		//Menu.entradaPasajero(a);
-		//Menu.entradaLicencia();
-		Menu.entradaPiloto();
+		Vuelo v1 = Menu.menuGeneral();
+
 
 	}
 }

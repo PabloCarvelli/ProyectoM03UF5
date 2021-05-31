@@ -129,6 +129,8 @@ public class Menu {
                     case 2:
                         System.out.println("Introduzca el peso de equipaje:");
                         pesoequipaje = EntradasConsola.entradaFlotantePositivo();
+                    default:
+                        System.out.println("Opcion incorrecta!");
                 }
             }
         }while (!respuesta);
@@ -278,10 +280,12 @@ public class Menu {
         vuelo.setDistancia(EntradasConsola.entradaoEnteroPositivo());
 
         do{
+            System.out.println("\033[H\033[2J");
+            System.out.flush();
             System.out.println("1. Ciudad de origen: " + vuelo.getCiudadSalida());
             System.out.println("2. Aeropuerto de origen: " + vuelo.getAeropuertoSalida());
             System.out.println("3. Ciudad de destino: " + vuelo.getCiudadDestino());
-            System.out.println("4. Aeropuerto de destino: " + vuelo.getCiudadDestino());
+            System.out.println("4. Aeropuerto de destino: " + vuelo.getAeropuertoDestino());
             System.out.println("5. Distancia de vuelo: " + vuelo.getDistancia());
             System.out.println("Son estos datos correctos?");
             respuesta = EntradasConsola.entradaBoolean();
@@ -325,22 +329,11 @@ public class Menu {
     }
 
 
-    public static void configurarVuelo(Vuelo vuelo){
+    public static Aeronave seleccionAeronave(Vuelo vuelo){
 
-        /*
-        private String ciudadSalida;
-        private String ciudadDestino;
-        private String aeropuertoSalida;
-        private String aeropuertoDestino;
-        private int distancia;
-        private Aeronave aeronave;
-        private Piloto comandante;
-        private Piloto primerOficial;
-        private LocalDate fechaVuelo;
-        private ArrayList<Pasajero> pasajeros;*/
-
-        entradaDatosSalidaDestino(vuelo);
-
+        boolean respuesta;
+        boolean aeronaveAdecuada;
+        Aeronave aeronave;
 
         do{
             System.out.println("Selecione una aeronave: ");
@@ -351,19 +344,94 @@ public class Menu {
 
             switch (EntradasConsola.entradaOpcion(3)){
                 case 1:
-                    vuelo.setAeronave(new Aeronave());
-                    System.out.println("La aeronave seleccionada tiene las siguientes caracteristicas: ");
-                    System.out.println();
-                    break;
+                    aeronave = new Aeronave();
+                    if(aeronave.getAutonomia() < vuelo.getDistancia()){
+                        System.out.println("La aeronave seleccionada tiene las siguientes caracteristicas:");
+                        System.out.println(aeronave.toString());
+                        System.out.println("La distancia de vuelo es mayor a la autonomia de la aeronave!");
+                        System.out.println("Seleccione otra aeronave para este vuelo.");
+                        aeronave = null;
+                        aeronaveAdecuada = false;
+                        break;
+                    }else{
+                        System.out.println("La aeronave seleccionada tiene las siguientes caracteristicas: ");
+                        System.out.println(aeronave.toString());
+                        aeronaveAdecuada = true;
+                        break;
+                    }
+
                 case 2:
+                    System.out.println("McDouglas MD-80.");
+                    System.out.println("Esta aeronave aun no esta disponible, disculpe las molestias.");
+                    System.out.println("Seleccione otra aeronave para este vuelo.");
+                    aeronave = null;
+                    aeronaveAdecuada = false;
                     break;
                 case 3:
+                    System.out.println("Embraer E-190.");
+                    System.out.println("Esta aeronave aun no esta disponible, disculpe las molestias.");
+                    System.out.println("Seleccione otra aeronave para este vuelo.");
+                    aeronave = null;
+                    aeronaveAdecuada = false;
                     break;
                 default:
                     System.out.println("Opcion incorrecta!");
+                    aeronave = null;
+                    aeronaveAdecuada = false;
                     break;
             }
-        }
+        }while(!aeronaveAdecuada);
+
+        return aeronave;
+    }
+
+    public static void configuracionVuelo(Vuelo vuelo){
+
+        // Entrada de los datos de las ciudades, aeropuertos de origen, destino y ditancia de vuelo.
+        entradaDatosSalidaDestino(vuelo);
+        // Seleccion de una aeronave adecuada para el vuelo segun la distancia de vuelo.
+        vuelo.setAeronave(seleccionAeronave(vuelo));
+        // Entrada de un comandante para el vuelo.
+        System.out.println("Ahora se le pediran los datos referentes al comandante para este vuelo.");
+        vuelo.setComandante(entradaPiloto());
+        // Entrada de un primer oficial para el vuelo.
+        System.out.println("Ahora se le pediran los datos referentes al primer oficial para este vuelo.");
+        vuelo.setPrimerOficial(entradaPiloto());
+        // Entrada de la fecha del vuelo.
+        System.out.println("Introduzca la fecha en la que saldra el vuelo:");
+        vuelo.setFechaVuelo(EntradasConsola.entradaFecha());
+
+    }
+
+    public static void ingresarPasajeroAbordo(Vuelo vuelo){
+
+        boolean respuesta;
+        // Entrada de pasajeros.
+        do{
+            System.out.println("Introduzca los datos del pasajero:");
+            vuelo.abordarPasajero(entradaPasajero(vuelo.getAeronave()));
+            System.out.println("Quiere ingresar un nuevo pasajero?");
+            respuesta = EntradasConsola.entradaBoolean();
+        }while(respuesta);
+    }
+
+    public static Vuelo menuGeneral(){
+        Vuelo vuelo = new Vuelo();
+        boolean respuesta;
+
+        do{
+            System.out.println("Bienvenido a la aplicacion de gestion de vuelos.");
+            System.out.println("Desea iniciar un nuevo vuelo?");
+            respuesta = EntradasConsola.entradaBoolean();
+        }while(!respuesta);
+
+        configuracionVuelo(vuelo);
+
+        System.out.println("Vuelo configurado!");
+
+        System.out.println(vuelo.toString());
+
+        return vuelo;
 
     }
 
