@@ -30,6 +30,16 @@ public class EntradasConsola {
         return n;
     }
 
+    public static double entradaDoublePositivo(){
+        double n;
+        Scanner entradaUsuario = new Scanner(System.in);
+        do{
+            n = entradaUsuario.nextFloat();
+        }while(n < 0);
+        //entradaUsuario.close();
+        return n;
+    }
+
     public static String entradaString(){
 
         String s = null;

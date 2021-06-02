@@ -448,10 +448,23 @@ public class Menu {
         if(vuelo.calculaTotalPayLoad() < vuelo.getAeronave().getMaxPayLoad()){
             vuelo.getAeronave().setPayLoad(vuelo.calculaTotalPayLoad());
         }else{
-            System.out.println("El peso de carga d epago para este vuelo es superior a lo admitido como carga de pago por la aeronave!");
+            System.out.println("El peso de carga de epago para este vuelo es superior a lo admitido como carga de pago por la aeronave!");
             System.out.println("Peso total del pasaje y tripulacion mas su equipaje: " + vuelo.calculaTotalPayLoad());
             System.out.println("Peso maximo de carga de pago admitido por la aeronave: " + vuelo.getAeronave().getMaxPayLoad());
+
         }
+
+        System.out.println("Ahora se le pedira que coloque el combustible necesario para este vuelo.");
+
+        do{
+            System.out.println("Cuantos litros desea colocar?");
+            vuelo.getAeronave().setCombustible(EntradasConsola.entradaDoublePositivo());
+
+            System.out.println("Combustible actualmente en la aeronave: " + vuelo.getAeronave().getCombustible() + " Kg.");
+            System.out.println("De un total de: " + vuelo.getAeronave().getMaximoCombustible() + " Kg.");
+            System.out.println("Es correcto este nivel de combustible?");
+            respuesta = EntradasConsola.entradaBoolean();
+        }while(!respuesta);
 
         return vuelo;
 

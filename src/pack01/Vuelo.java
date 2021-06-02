@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-public class Vuelo {
+public class Vuelo implements Cloneable {
 
     private String ciudadSalida;
     private String ciudadDestino;
@@ -22,6 +22,25 @@ public class Vuelo {
 
     public Vuelo(){
         pasajeros = new HashSet<Pasajero>();
+    }
+
+    public Vuelo(String ciudadSalida, String ciudadDestino, String aeropuertoSalida, String aeropuertoDestino, int distancia, Aeronave aeronave, Piloto comandante, Piloto primerOficial, LocalDate fechaVuelo, Set<Pasajero> pasajeros, double payLoad){
+        this.ciudadSalida = ciudadSalida;
+        this.ciudadDestino = ciudadDestino;
+        this.aeropuertoSalida = aeropuertoSalida;
+        this.aeropuertoDestino = aeropuertoDestino;
+        this.distancia = distancia;
+        this.aeronave = aeronave;
+        this.comandante = comandante;
+        this.primerOficial = primerOficial;
+        this.fechaVuelo = fechaVuelo;
+        this.pasajeros = pasajeros;
+        this.payLoad = payLoad;
+    }
+
+    public Vuelo colne(){
+        Vuelo vuelo = new Vuelo(this.ciudadSalida, this.ciudadDestino, this.aeropuertoSalida, this.aeropuertoDestino, this.distancia, this.aeronave, this.comandante, this.primerOficial, this.fechaVuelo, this.pasajeros, this.payLoad);
+        return vuelo;
     }
 
     public double calculaPayLoadPasajeros(){

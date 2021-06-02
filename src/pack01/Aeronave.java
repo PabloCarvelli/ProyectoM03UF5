@@ -286,6 +286,10 @@ public class Aeronave {
 		return maxPayLoad;
 	}
 
+	public double getMaximoCombustible(){
+		return maximoCombustible;
+	}
+
 	public void setPayLoad(double payLoad){
 		this.payLoad = payLoad;
 	}
@@ -295,7 +299,7 @@ public class Aeronave {
 			System.out.println("El combustible que intenta colocar es superior al maximo admitido por el avion.");
 			System.out.println("El combustible se cargara al maximo admitido. 26.020l.");
 			this.combustible = combustible + combustible * 0.7;
-			if(combustible > 26020) {
+			if(combustible > maximoCombustible) {
 				System.out.println("El combustible total es superior a lo que almacena la nave.");
 				System.out.println("El avion esta al maximo de combustible.");
 				this.combustible = maximoCombustible;
