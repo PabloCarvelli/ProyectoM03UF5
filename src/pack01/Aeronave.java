@@ -4,10 +4,12 @@ public class Aeronave {
 	private String fabricante = "Boeing";
 	private String modelo = "737-400";
 	private int pilotosParaOperacion = 2;
-	private int pesoMaximoTotal = 62820;
-	private int pesoOperacionPasaje;
+	private double pesoMaximoTotal = 62820.0;
+	private double maxPayLoad = 20412.0;
+	private double payLoad;
 	private int autonomia = 5241;
 	private double combustible = 0.0;
+	private double maximoCombustible = 26020.0;
 
 	static Asiento a1 = new Asiento(1, 'a', true, false);
 	static Asiento a2 = new Asiento(1, 'b', false, true);
@@ -270,25 +272,33 @@ public class Aeronave {
 		return pilotosParaOperacion;
 	}
 
-	public int getPesoMaximoTotal() {return pesoMaximoTotal; }
+	public double getPesoMaximoTotal() {return pesoMaximoTotal; }
 	
-	public int getPesoOperacionPasaje() {
-		return pesoOperacionPasaje;
+	public double getPayLoad() {
+		return payLoad;
 	}
 
 	public int getAutonomia() {
 		return autonomia;
 	}
+
+	public double getMaxPayLoad(){
+		return maxPayLoad;
+	}
+
+	public void setPayLoad(double payLoad){
+		this.payLoad = payLoad;
+	}
 	
 	public void setCombustible(double combustible) {
-		if(combustible > 26020) {
+		if(combustible > maximoCombustible) {
 			System.out.println("El combustible que intenta colocar es superior al maximo admitido por el avion.");
 			System.out.println("El combustible se cargara al maximo admitido. 26.020l.");
 			this.combustible = combustible + combustible * 0.7;
 			if(combustible > 26020) {
 				System.out.println("El combustible total es superior a lo que almacena la nave.");
 				System.out.println("El avion esta al maximo de combustible.");
-				this.combustible = 26020;
+				this.combustible = maximoCombustible;
 			}
 		}if(combustible < 0) {
 			System.out.println("El combustible que intenta colocar es incorrecto por ser un numero negativo.");

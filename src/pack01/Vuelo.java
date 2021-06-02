@@ -2,6 +2,9 @@ package pack01;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 public class Vuelo {
 
@@ -14,10 +17,39 @@ public class Vuelo {
     private Piloto comandante;
     private Piloto primerOficial;
     private LocalDate fechaVuelo;
-    private ArrayList<Pasajero> pasajeros;
+    private Set<Pasajero> pasajeros;
+    private double payLoad;
 
     public Vuelo(){
-        pasajeros = new ArrayList<Pasajero>();
+        pasajeros = new HashSet<Pasajero>();
+    }
+
+    public double calculaPayLoadPasajeros(){
+        double payLoadPasajeros = 0.0;
+        Pasajero p;
+
+        Iterator<Pasajero> it = pasajeros.iterator();
+
+        while(it.hasNext()){
+            p = it.next();
+            payLoadPasajeros += p.getPesoEquipaje() + p.getPeso();
+        }
+        return payLoadPasajeros;
+    }
+
+    public double calculaPayLoadPilotos(){
+        double payLoadPilotos = 0.0;
+
+        payLoadPilotos += comandante.getPeso() + comandante.getPesoEquipaje();
+        payLoadPilotos += primerOficial.getPeso() + primerOficial.getPesoEquipaje();
+
+        return payLoadPilotos;
+    }
+
+    public double calculaTotalPayLoad(){
+        double payLoad = 0.0;
+        payLoad = calculaPayLoadPilotos() + calculaPayLoadPasajeros();
+        return payLoad;
     }
 
     public void setCiudadSalida(String ciudadSalida){
@@ -83,14 +115,13 @@ public class Vuelo {
         return fechaVuelo;
     }
 
-    public ArrayList<Pasajero> getPasajeros(){
+    public Set<Pasajero> getPasajeros(){
         return pasajeros;
     }
 
     public void abordarPasajero(Pasajero pasajero){
 
         if(aeronave.getNumeroAsientosLibres() > 0){
-            System.out.println("Entro2!");
             pasajeros.add(pasajero);
             System.out.println(pasajero.getPasaje().toString());
             System.out.println("De un total de " + aeronave.getNumeroTotalDeAsientos() + " asientos en la aeronave.");

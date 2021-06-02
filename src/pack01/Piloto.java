@@ -10,6 +10,14 @@ public class Piloto extends Persona {
 		this.pesoEquipaje = pesoEquipaje;
 	}
 
+	public Licencia getLicencia(){
+		return licencia;
+	}
+
+	public double getPesoEquipaje(){
+		return pesoEquipaje;
+	}
+
 	@Override
 	public String toString(){
 		return documento.toString() + licencia.toString() + "\nPeso del piloto: " + peso + "\nPeso del equipaje: " + pesoEquipaje;

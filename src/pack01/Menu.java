@@ -431,6 +431,28 @@ public class Menu {
 
         System.out.println(vuelo.toString());
 
+        do{
+            System.out.println("Desea ingresar un pasajero?");
+
+            if(respuesta = EntradasConsola.entradaBoolean()){
+                ingresarPasajeroAbordo(vuelo);
+            }
+            System.out.println("Han sido ingresados ya todos los pasajeros de este vuelo?");
+            respuesta = EntradasConsola.entradaBoolean();
+
+        }while (!respuesta);
+
+        System.out.println("Peso total del pasaje y tripulacion mas su equipaje: " + vuelo.calculaTotalPayLoad());
+        System.out.println("Peso maximo de carga de pago admitido por la aeronave: " + vuelo.getAeronave().getMaxPayLoad());
+
+        if(vuelo.calculaTotalPayLoad() < vuelo.getAeronave().getMaxPayLoad()){
+            vuelo.getAeronave().setPayLoad(vuelo.calculaTotalPayLoad());
+        }else{
+            System.out.println("El peso de carga d epago para este vuelo es superior a lo admitido como carga de pago por la aeronave!");
+            System.out.println("Peso total del pasaje y tripulacion mas su equipaje: " + vuelo.calculaTotalPayLoad());
+            System.out.println("Peso maximo de carga de pago admitido por la aeronave: " + vuelo.getAeronave().getMaxPayLoad());
+        }
+
         return vuelo;
 
     }
