@@ -33,13 +33,13 @@ public class EscrituraFichero {
 
         cadena = "\nDatos de localizacion: " + "\nCiudad de origen: " + vuelo.getCiudadSalida() + "\nAeropuerto de origen: "
                 + vuelo.getAeropuertoSalida() + "\nCiudad de destino: " + vuelo.getCiudadDestino() + "\nAeropuerto de destino: "
-                + vuelo.getAeropuertoDestino() + "\nDistancia de vuelo: " + vuelo.getDistancia() + "\nFecha de salida: " + vuelo.getFechaVuelo() +
-                "\nDatos sobre la aeronave: " + "\nFabricante: " + vuelo.getAeronave().getFabricante() + "Modelo: " + vuelo.getAeronave().getModelo() +
+                + vuelo.getAeropuertoDestino() + "\nDistancia de vuelo: " + vuelo.getDistancia() + "\nFecha de salida: " + vuelo.getFechaVuelo() + "\n" +
+                "\nDatos sobre la aeronave: " + "\nFabricante: " + vuelo.getAeronave().getFabricante() + "\nModelo: " + vuelo.getAeronave().getModelo() +
                 "\nPilotos necesarios para operar: " + vuelo.getAeronave().getPilotosParaOperacion() + "\nNumero de asientos para pasajeros: " +
                 vuelo.getAeronave().getNumeroTotalDeAsientos() + "\nPeso maximo de la aeronave: " +
                 vuelo.getAeronave().getPesoMaximoTotal() + "\nMaxima carga de pago: " + vuelo.getAeronave().getMaxPayLoad() +
                 "\nCarga de pago actual: " + vuelo.getAeronave().getPayLoad() + "\nMaximo Combustible: " + vuelo.getAeronave().getMaximoCombustible() +
-                "\nCombustible actual: " + vuelo.getAeronave().getCombustible() + "\nAutonomia maxima: " + vuelo.getAeronave().getAutonomia() +
+                "\nCombustible actual: " + vuelo.getAeronave().getCombustible() + "\nAutonomia maxima: " + vuelo.getAeronave().getAutonomia() + "\n" +
                 "\nInformacion sobre los pilotos: " + "\nComandante: " + vuelo.getComandante().getDocumento().getNombre() + " " +
                 vuelo.getComandante().getDocumento().getApellido1() + " " + vuelo.getComandante().getDocumento().getApellido2() +
                 "\nPeso corporal: " + vuelo.getComandante().getPeso() + "\nPeso del equipaje: " + vuelo.getComandante().getPesoEquipaje() +
@@ -50,7 +50,7 @@ public class EscrituraFichero {
                 "\nDni: " + vuelo.getPrimerOficial().getDocumento().getDni() + vuelo.getPrimerOficial().getDocumento().getLetra() +
                 "\nPeso corporal: " + vuelo.getPrimerOficial().getPeso() + "\nPeso del equipaje: " + vuelo.getPrimerOficial().getPesoEquipaje() +
                 "\nLicencia: " + "\nNumero de licencia: " + vuelo.getPrimerOficial().getLicencia().getNumeroLicencia() +
-                "\nFecha de vencimiento: " + vuelo.getPrimerOficial().getLicencia().getFechaVencimiento() + "\nInformacion sobre el pasaje: " +
+                "\nFecha de vencimiento: " + vuelo.getPrimerOficial().getLicencia().getFechaVencimiento() + "\n" + "\nInformacion sobre el pasaje: " +
                 "\nNumero de pasajeros a bordo: " + vuelo.getAeronave().getNumeroAsientosOcupados() + "\nNumero de asientos libres: " +
                 vuelo.getAeronave().getNumeroAsientosLibres();
 
