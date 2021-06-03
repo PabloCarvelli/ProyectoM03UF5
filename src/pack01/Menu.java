@@ -466,6 +466,8 @@ public class Menu {
             respuesta = EntradasConsola.entradaBoolean();
         }while(!respuesta);
 
+        EscrituraFichero.escribir(vuelo);
+
         return vuelo;
 
     }

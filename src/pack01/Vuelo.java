@@ -156,4 +156,5 @@ public class Vuelo implements Cloneable {
     public String toString(){
         return "\nCiudad de origen: " + ciudadSalida + "\nAeropuerto de origen: " + aeropuertoSalida + "\nCiudad de destino: " + ciudadDestino + "\nAeropuerto de destino: " + aeropuertoDestino + "\nDistancia de vuelo: " + distancia + "\n\nInformacion de la aeronave: " + aeronave.toString() + "\n\nInformacion del comandante: " + comandante.toString() + "\n\nInformacion del primer oficial: " + primerOficial.toString() + "\n\nFecha de salida: " + fechaVuelo.toString();
     }
+
 }
